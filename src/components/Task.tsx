@@ -16,7 +16,7 @@ export default function Task({
   if (isCompletedFlag === "") {
     newTaskList = [...taskList];
   }
-  console.log(newTaskList.length);
+  console.log(newTaskList);
   return (
     <ul className="todo-list">
       {newTaskList?.map((item) => {
