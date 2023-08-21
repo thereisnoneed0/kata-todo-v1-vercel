@@ -7,11 +7,16 @@ export default function Task({
 }: TTaskListProps): JSX.Element {
   let newTaskList;
 
-  if (isCompletedFlag === "completed")
+  if (isCompletedFlag === "completed") {
     newTaskList = [...taskList].filter((el) => el.isCompleted);
-  if (isCompletedFlag === "editing")
+  }
+  if (isCompletedFlag === "editing") {
     newTaskList = [...taskList].filter((el) => !el.isCompleted);
-  if (isCompletedFlag === "") newTaskList = [...taskList];
+  }
+  if (isCompletedFlag === "") {
+    newTaskList = [...taskList];
+  }
+  console.log(newTaskList.length);
   return (
     <ul className="todo-list">
       {newTaskList?.map((item) => {
@@ -19,11 +24,12 @@ export default function Task({
           <li key={item.id}>
             <div className="view">
               <input
+                id={item.id}
                 className="toggle"
                 type="checkbox"
                 onClick={() => handleTaskIsCompleted(item.id)}
               ></input>
-              <label>
+              <label htmlFor={item.id}>
                 <span className="description">{item.text}</span>
                 <span className="created">created 17 seconds ago</span>
               </label>
