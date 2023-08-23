@@ -69,6 +69,10 @@ export default function App() {
     setTaskList([]);
   }
 
+  function handleDeleteTask(id: string) {
+    setTaskList(taskList.filter((task) => task.id !== id));
+  }
+
   const handleHowManyIsLeft = taskList.filter((e) => e.isCompleted).length;
 
   return (
