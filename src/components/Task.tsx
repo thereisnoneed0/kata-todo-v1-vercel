@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { TTaskListProps, TTaskUniqueProps } from "./types/types";
+import { TTaskUniqueProps } from "./types/types";
 
 function Task({
   item,
-  isCompletedFlag,
+
   handleTaskIsCompleted,
   handleDeleteTask,
   handleChangeTextAtTask
@@ -53,7 +53,7 @@ function Task({
         <button
           className="icon icon-edit"
           onClick={() => {
-            setEdit((prev) => !edit);
+            setEdit(!edit);
           }}
         ></button>
         <button
