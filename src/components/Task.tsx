@@ -4,7 +4,6 @@ import { formatDistanceToNow } from "date-fns";
 
 function Task({
   item,
-
   handleTaskIsCompleted,
   handleDeleteTask,
   handleChangeTextAtTask
@@ -34,6 +33,10 @@ function Task({
                 handleChangeTextAtTask(item.id, taskText);
                 setEdit(false);
               }
+              if (e.code === "Escape") {
+                handleChangeTextAtTask(item.id, item.text);
+                setEdit(false);
+              }
             }}
           />
         </div>
@@ -47,7 +50,6 @@ function Task({
           id={item.id}
           className="toggle"
           type="checkbox"
-          // onClick={() => handleTaskIsCompleted(item.id)}
           onChange={() => handleTaskIsCompleted(item.id)}
           checked={item.isCompleted}
         ></input>

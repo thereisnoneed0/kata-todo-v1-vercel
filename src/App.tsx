@@ -13,6 +13,12 @@ export default function App() {
   const [taskList, setTaskList] = useState<TInputTypes[]>([]); // task list []
   const [isCompletedFlag, setIsCompletedFlag] =
     useState<TStatesForCompleted>("");
+  const [activeFilter, setActiveFilter] = useState<string>("All");
+
+  function handleSetActiveFilter(filter: string): void {
+    setActiveFilter(filter);
+    console.log(activeFilter, "ACTIVER_FILTER");
+  }
 
   function handleFlagToComplete() {
     console.log(
@@ -20,12 +26,14 @@ export default function App() {
     );
     setIsCompletedFlag("completed");
   }
+
   function handleFlagToEdit() {
     console.log(
       "я только что поменял isCompletedFlag  на    " + isCompletedFlag
     );
     setIsCompletedFlag("editing");
   }
+
   function handleFlagToAll() {
     console.log(
       "я только что поменял isCompletedFlag  на    " + isCompletedFlag
@@ -38,7 +46,6 @@ export default function App() {
   }
 
   function handleAddTask(inputText: string) {
-    "console.log(OTRABOTALO)";
     if (inputText.trim() === "") return;
     setInputText("");
     setTaskList([
@@ -76,7 +83,6 @@ export default function App() {
   }
 
   function handleChangeTextAtTask(id: string, newText: string) {
-    console.log(taskList, " taskLiiist at App");
     setTaskList(
       taskList.map((t) => {
         if (t.id === id) {
@@ -105,17 +111,16 @@ export default function App() {
       <section className="main">
         <TaskList
           taskList={taskList}
-          isCompletedFlag={isCompletedFlag}
+          activeFilter={activeFilter}
           handleTaskIsCompleted={handleTaskIsCompleted}
           handleDeleteTask={handleDeleteTask}
           handleChangeTextAtTask={handleChangeTextAtTask}
         />
         <Footer
           clearAll={handleclearAll}
-          toComplete={handleFlagToComplete}
-          toEdit={handleFlagToEdit}
-          toAll={handleFlagToAll}
           handleHowManyIsLeft={handleHowManyIsLeft}
+          onClickSetActiveFilter={handleSetActiveFilter}
+          activeFilter={activeFilter}
         />
       </section>
     </section>

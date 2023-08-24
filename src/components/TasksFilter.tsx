@@ -1,47 +1,25 @@
 import { useState } from "react";
 import { TBtnIsSelectedProps, TFooterProps } from "./types/types";
 export default function TaskFilters({
-  toEdit,
-  toComplete,
-  toAll
+  activeFilter,
+  onClickSetActiveFilter
 }: TFooterProps) {
   const [btnIsSelected, setBtnIsSelected] = useState<TBtnIsSelectedProps>("");
+  const arrayOfNamesForBtns = ["All", "Active", "Completed"];
   return (
     <ul className="filters">
-      <li>
-        <button
-          className={btnIsSelected === "SelectedAll" ? "selected" : ""}
-          onClick={() => {
-            setBtnIsSelected("SelectedAll");
-            toAll();
-          }}
-        >
-          All
-        </button>
-      </li>
-      <li>
-        <button
-          className={btnIsSelected === "SelectedActive" ? "selected" : ""}
-          onClick={() => {
-            setBtnIsSelected("SelectedActive");
-
-            toEdit();
-          }}
-        >
-          Active
-        </button>
-      </li>
-      <li>
-        <button
-          className={btnIsSelected === "SelectedCompleted" ? "selected" : ""}
-          onClick={() => {
-            setBtnIsSelected("SelectedCompleted");
-            toComplete();
-          }}
-        >
-          Completed
-        </button>
-      </li>
+      {arrayOfNamesForBtns.map((btn) => {
+        return (
+          <li>
+            <button
+              className={activeFilter === btn ? "selected" : ""}
+              onClick={() => onClickSetActiveFilter(btn)}
+            >
+              {btn}
+            </button>
+          </li>
+        );
+      })}
     </ul>
   );
 }

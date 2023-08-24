@@ -7,12 +7,15 @@ export type TInputTypes = {
 
 export type TTaskListProps = {
   taskList: TInputTypes[];
-  isCompletedFlag: TStatesForCompleted;
+  activeFilter: string;
   handleTaskIsCompleted: (id: string) => void;
   handleDeleteTask: (id: string) => void;
   handleChangeTextAtTask: (id: string, newText: string) => void;
 };
-export type TTaskUniqueProps = Omit<TTaskListProps, "taskList"> & {
+export type TTaskUniqueProps = Omit<
+  TTaskListProps,
+  "taskList" | "activeFilter"
+> & {
   item: TInputTypes;
 };
 
@@ -24,10 +27,9 @@ export type TNewTaskFormProps = {
 
 export type TFooterProps = {
   clearAll?: () => void;
-  toComplete: () => void;
-  toEdit: () => void;
-  toAll: () => void;
   handleHowManyIsLeft: number;
+  onClickSetActiveFilter: (s: string) => void;
+  activeFilter: string;
 };
 
 export type TStatesForCompleted = "completed" | "editing" | "";

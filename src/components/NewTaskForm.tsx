@@ -16,7 +16,6 @@ export default function NewTaskForm({
         onKeyUp={(e) => {
           if (e.code === "Enter") {
             addTask(inputText);
-            console.log("hello");
           }
         }}
       />
