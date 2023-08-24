@@ -30,3 +30,8 @@ export type TFooterProps = {
 };
 
 export type TStatesForCompleted = "completed" | "editing" | "";
+export type TBtnIsSelectedProps =
+  | "SelectedAll"
+  | "SelectedActive"
+  | "SelectedCompleted"
+  | "";
