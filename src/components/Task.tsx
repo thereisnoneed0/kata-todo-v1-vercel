@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { TTaskUniqueProps } from "./types/types";
+import { formatDistanceToNow } from "date-fns";
 
 function Task({
   item,
@@ -10,6 +11,10 @@ function Task({
 }: TTaskUniqueProps) {
   const [edit, setEdit] = useState(false);
   const [taskText, setTaskText] = useState(item.text);
+
+  const formatDistToNow = formatDistanceToNow(item.date, {
+    includeSeconds: true
+  });
 
   if (edit && !item.isCompleted) {
     return (
@@ -48,7 +53,7 @@ function Task({
         ></input>
         <label htmlFor={item.id}>
           <span className="description">{item.text}</span>
-          <span className="created">created 17 seconds ago</span>
+          <span className="created">{formatDistToNow}</span>
         </label>
         <button
           className="icon icon-edit"

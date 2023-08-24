@@ -2,6 +2,7 @@ export type TInputTypes = {
   id: string;
   isCompleted: boolean;
   text: string;
+  date: Date;
 };
 
 export type TTaskListProps = {

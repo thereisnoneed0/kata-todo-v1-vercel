@@ -46,7 +46,7 @@ export default function App() {
       {
         text: inputText,
         isCompleted: false,
-
+        date: new Date(),
         id: uuidv4()
       }
     ]);
