@@ -6,13 +6,11 @@ import TaskList from "./components/TaskList";
 import Footer from "./components/Footer";
 
 import "./App.css";
-import { TInputTypes, TStatesForCompleted } from "./components/types/types";
+import { TInputTypes } from "./components/types/types";
 
 export default function App() {
   const [inputText, setInputText] = useState<string>(""); // new task form
   const [taskList, setTaskList] = useState<TInputTypes[]>([]); // task list []
-  const [isCompletedFlag, setIsCompletedFlag] =
-    useState<TStatesForCompleted>("");
   const [activeFilter, setActiveFilter] = useState<string>("All");
 
   function handleSetActiveFilter(filter: string): void {
@@ -55,7 +53,6 @@ export default function App() {
   }
 
   function handleDeleteTask(id: string) {
-    // теперь передай в пропсах эту функцию я это не успел сдалать
     setTaskList(taskList.filter((task) => task.id !== id));
   }
 
