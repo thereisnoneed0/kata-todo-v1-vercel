@@ -17,28 +17,6 @@ export default function App() {
 
   function handleSetActiveFilter(filter: string): void {
     setActiveFilter(filter);
-    console.log(activeFilter, "ACTIVER_FILTER");
-  }
-
-  function handleFlagToComplete() {
-    console.log(
-      "я только что поменял isCompletedFlag  на    " + isCompletedFlag
-    );
-    setIsCompletedFlag("completed");
-  }
-
-  function handleFlagToEdit() {
-    console.log(
-      "я только что поменял isCompletedFlag  на    " + isCompletedFlag
-    );
-    setIsCompletedFlag("editing");
-  }
-
-  function handleFlagToAll() {
-    console.log(
-      "я только что поменял isCompletedFlag  на    " + isCompletedFlag
-    );
-    setIsCompletedFlag("");
   }
 
   function handleSetInput(e: React.ChangeEvent<HTMLInputElement | undefined>) {
@@ -63,7 +41,6 @@ export default function App() {
     setTaskList(
       taskList.map((item) => {
         if (item.id === id) {
-          console.log(item, "itemmms");
           return {
             ...item,
             isCompleted: !item.isCompleted

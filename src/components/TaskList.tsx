@@ -1,5 +1,3 @@
-// import Task from "./Task";
-
 import { TTaskListProps, TInputTypes } from "./types/types";
 import Task from "./Task";
 

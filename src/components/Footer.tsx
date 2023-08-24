@@ -2,7 +2,6 @@ import TaskFilter from "./TasksFilter";
 import { TFooterProps } from "./types/types";
 export default function Footer({
   clearAll,
-
   onClickSetActiveFilter,
   activeFilter,
   handleHowManyIsLeft
