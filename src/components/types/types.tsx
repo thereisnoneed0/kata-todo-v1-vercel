@@ -8,6 +8,11 @@ export type TTaskListProps = {
   taskList: TInputTypes[];
   isCompletedFlag: TStatesForCompleted;
   handleTaskIsCompleted: (id: string) => void;
+  handleDeleteTask: (id: string) => void;
+  handleChangeTextAtTask: (id: string, newText: string) => void;
+};
+export type TTaskUniqueProps = Omit<TTaskListProps, "taskList"> & {
+  item: TInputTypes;
 };
 
 export type TNewTaskFormProps = {

@@ -39,6 +39,7 @@ export default function App() {
 
   function handleAddTask(inputText: string) {
     "console.log(OTRABOTALO)";
+    if (inputText.trim() === "") return;
     setInputText("");
     setTaskList([
       ...taskList,
@@ -70,7 +71,23 @@ export default function App() {
   }
 
   function handleDeleteTask(id: string) {
+    // теперь передай в пропсах эту функцию я это не успел сдалать
     setTaskList(taskList.filter((task) => task.id !== id));
+  }
+
+  function handleChangeTextAtTask(id: string, newText: string) {
+    console.log(taskList, " taskLiiist at App");
+    setTaskList(
+      taskList.map((t) => {
+        if (t.id === id) {
+          return {
+            ...t,
+            text: newText
+          };
+        }
+        return t;
+      })
+    );
   }
 
   const handleHowManyIsLeft = taskList.filter((e) => e.isCompleted).length;
@@ -90,6 +107,8 @@ export default function App() {
           taskList={taskList}
           isCompletedFlag={isCompletedFlag}
           handleTaskIsCompleted={handleTaskIsCompleted}
+          handleDeleteTask={handleDeleteTask}
+          handleChangeTextAtTask={handleChangeTextAtTask}
         />
         <Footer
           clearAll={handleclearAll}
