@@ -1,10 +1,6 @@
-import { TNewTaskFormProps } from "./types/types";
+import { TNewTaskFormProps } from './types/types'
 
-export default function NewTaskForm({
-  handleSetInput,
-  addTask,
-  inputText
-}: TNewTaskFormProps) {
+export default function NewTaskForm({ handleSetInput, addTask, inputText }: TNewTaskFormProps) {
   return (
     <header className="header">
       <input
@@ -14,11 +10,11 @@ export default function NewTaskForm({
         value={inputText}
         onChange={handleSetInput}
         onKeyUp={(e) => {
-          if (e.code === "Enter") {
-            addTask(inputText);
+          if (e.code === 'Enter') {
+            addTask(inputText)
           }
         }}
       />
     </header>
-  );
+  )
 }

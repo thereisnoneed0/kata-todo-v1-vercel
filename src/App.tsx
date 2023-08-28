@@ -1,38 +1,38 @@
-import { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
+import { useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
-import NewTaskForm from "./components/NewTaskForm";
-import TaskList from "./components/TaskList";
-import Footer from "./components/Footer";
+import NewTaskForm from './components/NewTaskForm'
+import TaskList from './components/TaskList'
+import Footer from './components/Footer'
 
-import "./App.css";
-import { TInputTypes } from "./components/types/types";
+import './App.css'
+import { TInputTypes } from './components/types/types'
 
 export default function App() {
-  const [inputText, setInputText] = useState<string>(""); // new task form
-  const [taskList, setTaskList] = useState<TInputTypes[]>([]); // task list []
-  const [activeFilter, setActiveFilter] = useState<string>("All");
+  const [inputText, setInputText] = useState<string>('') // new task form
+  const [taskList, setTaskList] = useState<TInputTypes[]>([]) // task list []
+  const [activeFilter, setActiveFilter] = useState<string>('All')
 
   function handleSetActiveFilter(filter: string): void {
-    setActiveFilter(filter);
+    setActiveFilter(filter)
   }
 
   function handleSetInput(e: React.ChangeEvent<HTMLInputElement | undefined>) {
-    setInputText(e.target.value);
+    setInputText(e.target.value)
   }
 
   function handleAddTask(inputText: string) {
-    if (inputText.trim() === "") return;
-    setInputText("");
+    if (inputText.trim() === '') return
+    setInputText('')
     setTaskList([
       ...taskList,
       {
         text: inputText,
         isCompleted: false,
         date: new Date(),
-        id: uuidv4()
-      }
-    ]);
+        id: uuidv4(),
+      },
+    ])
   }
 
   function handleTaskIsCompleted(id: string) {
@@ -41,19 +41,19 @@ export default function App() {
         if (item.id === id) {
           return {
             ...item,
-            isCompleted: !item.isCompleted
-          };
+            isCompleted: !item.isCompleted,
+          }
         }
-        return { ...item };
+        return { ...item }
       })
-    );
+    )
   }
   function handleclearAll() {
-    setTaskList([]);
+    setTaskList([])
   }
 
   function handleDeleteTask(id: string) {
-    setTaskList(taskList.filter((task) => task.id !== id));
+    setTaskList(taskList.filter((task) => task.id !== id))
   }
 
   function handleChangeTextAtTask(id: string, newText: string) {
@@ -62,25 +62,21 @@ export default function App() {
         if (t.id === id) {
           return {
             ...t,
-            text: newText
-          };
+            text: newText,
+          }
         }
-        return t;
+        return t
       })
-    );
+    )
   }
 
-  const handleHowManyIsLeft = taskList.filter((e) => e.isCompleted).length;
+  const handleHowManyIsLeft = taskList.filter((e) => e.isCompleted).length
 
   return (
     <section className="todoapp">
       <header>
         <h1>ToDos</h1>
-        <NewTaskForm
-          handleSetInput={handleSetInput}
-          inputText={inputText}
-          addTask={handleAddTask}
-        />
+        <NewTaskForm handleSetInput={handleSetInput} inputText={inputText} addTask={handleAddTask} />
       </header>
       <section className="main">
         <TaskList
@@ -98,5 +94,5 @@ export default function App() {
         />
       </section>
     </section>
-  );
+  )
 }

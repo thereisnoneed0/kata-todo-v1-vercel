@@ -1,28 +1,28 @@
-import { TTaskListProps, TInputTypes } from "./types/types";
-import Task from "./Task";
+import { TTaskListProps, TInputTypes } from './types/types'
+import Task from './Task'
 
 export default function TaskList({
   taskList,
   activeFilter,
   handleTaskIsCompleted,
   handleDeleteTask,
-  handleChangeTextAtTask
+  handleChangeTextAtTask,
 }: TTaskListProps) {
-  let newTaskList;
+  let newTaskList
 
   switch (activeFilter) {
-    case "Completed":
-      newTaskList = [...taskList].filter((el) => el.isCompleted);
-      break;
-    case "Active":
-      newTaskList = [...taskList].filter((el) => !el.isCompleted);
-      break;
-    case "All":
-      newTaskList = [...taskList];
-      break;
+    case 'Completed':
+      newTaskList = [...taskList].filter((el) => el.isCompleted)
+      break
+    case 'Active':
+      newTaskList = [...taskList].filter((el) => !el.isCompleted)
+      break
+    case 'All':
+      newTaskList = [...taskList]
+      break
   }
 
-  console.log(newTaskList);
+  console.log(newTaskList)
   return (
     <ul className="todo-list">
       {newTaskList?.map((item: TInputTypes) => {
@@ -33,8 +33,8 @@ export default function TaskList({
             handleDeleteTask={handleDeleteTask}
             handleChangeTextAtTask={handleChangeTextAtTask}
           />
-        );
+        )
       })}
     </ul>
-  );
+  )
 }

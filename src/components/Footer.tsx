@@ -1,11 +1,6 @@
-import TaskFilter from "./TasksFilter";
-import { TFooterProps } from "./types/types";
-export default function Footer({
-  clearAll,
-  onClickSetActiveFilter,
-  activeFilter,
-  handleHowManyIsLeft
-}: TFooterProps) {
+import TaskFilter from './TasksFilter'
+import { TFooterProps } from './types/types'
+export default function Footer({ clearAll, onClickSetActiveFilter, activeFilter, handleHowManyIsLeft }: TFooterProps) {
   return (
     <footer className="footer">
       <span className="todo-count">{handleHowManyIsLeft} 1 items left</span>
@@ -18,5 +13,5 @@ export default function Footer({
         Clear completed
       </button>
     </footer>
-  );
+  )
 }
