@@ -14,7 +14,8 @@
     "lint_1": "eslint src",
     "lint:write": "npm run lint -- --fix ",
     "preview": "vite preview",
-    "prepare": "husky install"
+    "prepare": "husky install" 
+     
   },
   "dependencies": {
     "date-fns": "^2.30.0",
